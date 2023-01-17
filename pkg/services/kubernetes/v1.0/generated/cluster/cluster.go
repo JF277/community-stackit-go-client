@@ -801,8 +801,7 @@ type ClientWithResponsesInterface interface {
 	// DeleteCluster request
 	DeleteClusterWithResponse(ctx context.Context, projectID string, clusterName string, reqEditors ...RequestEditorFn) (*DeleteClusterResponse, error)
 
-	// GetCluster request
-	GetClusterWithResponse(ctx context.Context, projectID string, clusterName string, reqEditors ...RequestEditorFn) (*GetClusterResponse, error)
+	GetClusterWithResponseInterface
 
 	// CreateOrUpdateCluster request with any body
 	CreateOrUpdateClusterWithBodyWithResponse(ctx context.Context, projectID string, clusterName string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateOrUpdateClusterResponse, error)
@@ -820,6 +819,11 @@ type ClientWithResponsesInterface interface {
 
 	// TriggerClusterWakeup request
 	TriggerClusterWakeupWithResponse(ctx context.Context, projectID string, clusterName string, reqEditors ...RequestEditorFn) (*TriggerClusterWakeupResponse, error)
+}
+
+type GetClusterWithResponseInterface interface {
+	// GetCluster request
+	GetClusterWithResponse(ctx context.Context, projectID string, clusterName string, reqEditors ...RequestEditorFn) (*GetClusterResponse, error)
 }
 
 type ListClustersResponse struct {

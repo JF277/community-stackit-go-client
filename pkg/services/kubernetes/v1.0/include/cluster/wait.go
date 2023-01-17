@@ -9,7 +9,7 @@ import (
 	"github.com/SchwarzIT/community-stackit-go-client/pkg/wait"
 )
 
-func (r CreateOrUpdateClusterResponse) WaitHandler(ctx context.Context, c cluster.ClientWithResponsesInterface, projectID, clusterName string) *wait.Handler {
+func (r CreateOrUpdateClusterResponse) WaitHandler(ctx context.Context, c cluster.GetClusterWithResponseInterface, projectID, clusterName string) *wait.Handler {
 	return wait.New(func() (res interface{}, done bool, err error) {
 		resp, err := c.GetClusterWithResponse(ctx, projectID, clusterName)
 		if err != nil {
@@ -36,7 +36,7 @@ func (r CreateOrUpdateClusterResponse) WaitHandler(ctx context.Context, c cluste
 	})
 }
 
-func (r DeleteClusterResponse) WaitHandler(ctx context.Context, c cluster.ClientWithResponsesInterface, projectID, clusterName string) *wait.Handler {
+func (r DeleteClusterResponse) WaitHandler(ctx context.Context, c cluster.GetClusterWithResponseInterface, projectID, clusterName string) *wait.Handler {
 	return wait.New(func() (res interface{}, done bool, err error) {
 		resp, err := c.GetClusterWithResponse(ctx, projectID, clusterName)
 		if err != nil {
